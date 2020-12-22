@@ -2,9 +2,9 @@
         <div class="main">
             <div class="content">
                 <div class="report">
-                    <h2>Question Manager</h2>
+                    <h2>Savollarni boshqarish</h2>
                         <a href="<?php echo SITEURL; ?>admin/index.php?page=add_question">
-                            <button type="button" class="btn-add">Add Question</button>
+                            <button type="button" class="btn-add">Savol qo'shish</button>
                         </a>
                         <?php 
                             if(isset($_SESSION['add']))
@@ -27,10 +27,10 @@
                     <table>
                         <tr>
                             <th>S.N.</th>
-                            <th>Question</th>
-                            <th>Answer</th>
-                            <th>Exam</th>
-                            <th>Is Active?</th>
+                            <th>Savol</th>
+                            <th>Javob</th>
+                            <th>Imtihon</th>
+                            <th>Aktivmi?</th>
                             <th>Actions</th>
                         </tr>
                         
@@ -58,8 +58,8 @@
                                         <td><?php echo $faculty; ?></td></td>
                                         <td><?php echo $is_active; ?></td>
                                         <td>
-                                            <a href="<?php echo SITEURL; ?>admin/index.php?page=update_question&id=<?php echo $question_id; ?>"><button type="button" class="btn-update">UPDATE</button></a> 
-                                            <a href="<?php echo SITEURL; ?>admin/pages/delete.php?id=<?php echo $question_id; ?>&page=questions"><button type="button" class="btn-delete" onclick="return confirm('Are you sure?')">DELETE</button></a>
+                                            <a href="<?php echo SITEURL; ?>admin/index.php?page=update_question&id=<?php echo $question_id; ?>"><button type="button" class="btn-update">Yangilash</button></a> 
+                                            <a href="<?php echo SITEURL; ?>admin/pages/delete.php?id=<?php echo $question_id; ?>&page=questions"><button type="button" class="btn-delete" onclick="return confirm('Ishonchingiz komilmi?')">O'chirish</button></a>
                                         </td>
                                     </tr>
                                     <?php

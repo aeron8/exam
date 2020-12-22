@@ -2,7 +2,7 @@
         <div class="main">
             <div class="content">
                 <div class="report">
-                    <h2>Result Manager</h2>
+                    <h2>Natijalarni boshqarish</h2>
                     <!--<button type="button" class="btn-add">Add User</button>-->
                     <?php 
                         if(isset($_SESSION['delete']))
@@ -14,10 +14,10 @@
                     <table>
                         <tr>
                             <th>S.N.</th>
-                            <th>Full Name</th>
-                            <th>Date</th>
+                            <th>Ism</th>
+                            <th>Sana</th>
                             <th>Mark</th>
-                            <th>Exam</th>
+                            <th>Imtihon</th>
                             <th>Actions</th>
                         </tr>
                         
@@ -57,8 +57,8 @@
                                             ?>
                                         </td>
                                         <td>
-                                            <a href="<?php echo SITEURL; ?>admin/index.php?page=view_result&student_id=<?php echo $student_id; ?>&added_date=<?php echo $added_date; ?>"><button type="button" class="btn-update">VIEW</button></a> 
-                                            <a href="<?php echo SITEURL; ?>admin/pages/delete_result.php?summary_id=<?php echo $summary_id; ?>&student_id=<?php echo $student_id; ?>&added_date=<?php echo $added_date; ?>"><button type="button" class="btn-delete">DELETE</button></a>
+                                            <a href="<?php echo SITEURL; ?>admin/index.php?page=view_result&student_id=<?php echo $student_id; ?>&added_date=<?php echo $added_date; ?>"><button type="button" class="btn-update">Ko'rish</button></a> 
+                                            <a href="<?php echo SITEURL; ?>admin/pages/delete_result.php?summary_id=<?php echo $summary_id; ?>&student_id=<?php echo $student_id; ?>&added_date=<?php echo $added_date; ?>"><button type="button" class="btn-delete">O'chirish</button></a>
                                         </td>
                                     </tr>
                                     <?php
@@ -66,7 +66,7 @@
                             }
                             else
                             {
-                                echo "<tr><td colspan='7'><span class='error'>No Results Found Yet.</span></td></tr>";
+                                echo "<tr><td colspan='7'><span class='error'>Natijalar mavjud emas.</span></td></tr>";
                             }
                         ?>
                         

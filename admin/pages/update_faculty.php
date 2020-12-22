@@ -32,7 +32,7 @@
                 <div class="report">
                     
                     <form method="post" action="" class="forms">
-                        <h2>Update Faculty</h2>
+                        <h2>Imtihonni yangilash</h2>
                         <?php 
                             if(isset($_SESSION['update']))
                             {
@@ -40,13 +40,13 @@
                                 unset($_SESSION['update']);
                             }
                         ?>
-                        <span class="name">Exam Title</span> 
+                        <span class="name">Nomi</span> 
                         <input type="text" name="faculty_name" value="<?php echo $faculty_name; ?>" required="true" /> <br />
                         
-                        <span class="name">Time Duration</span>
+                        <span class="name">Davomiyligi</span>
                         <input type="number" name="time_duration" value="<?php echo $time_duration; ?>" required="true" /><br />
                         
-                        <span class="name">Questions/Set</span>
+                        <span class="name">Savollar</span>
                         <input type="number" name="qns_per_page" value="<?php echo $qns_per_page; ?>" required="true" /><br />
                         
                         <!-- <span class="name">Total English Qns</span>
@@ -55,13 +55,13 @@
                         <span class="name">Total Math Qns</span>
                         <input type="number" name="total_math_qns" value="<?php echo $total_math; ?>" /><br /> -->
                         
-                        <span class="name">Is Active?</span>
-                        <input <?php if($is_active=="yes"){echo "checked='checked'";} ?> type="radio" name="is_active" value="yes" /> Yes 
-                        <input <?php if($is_active=="no"){echo "checked='checked'";} ?> type="radio" name="is_active" value="no" /> No
+                        <span class="name">Aktivmi?</span>
+                        <input <?php if($is_active=="yes"){echo "checked='checked'";} ?> type="radio" name="is_active" value="yes" /> Xa 
+                        <input <?php if($is_active=="no"){echo "checked='checked'";} ?> type="radio" name="is_active" value="no" /> Yo'q
                         <br />
                         
-                        <input type="submit" name="submit" value="Update Faculty" class="btn-update" style="margin-left: 15%;" />
-                        <button type="button" class="btn-delete">Cancel</button>
+                        <input type="submit" name="submit" value="Yangilash" class="btn-update" style="margin-left: 15%;" />
+                        <a href="<?php echo SITEURL; ?>admin/index.php?page=faculties"><button type="button" class="btn-delete">Bekor qilish</button></a>
                     </form>
                     <?php 
                         if(isset($_POST['submit']))
@@ -85,12 +85,12 @@
                             $res=$obj->execute_query($conn,$query);
                             if($res===true)
                             {
-                                $_SESSION['update']="<div class='success'>Faculty successfully updated.</div>";
+                                $_SESSION['update']="<div class='success'>Imtihon yangilandi.</div>";
                                 header('location:'.SITEURL.'admin/index.php?page=faculties');
                             }
                             else
                             {
-                                $_SESSION['update']="<div class='error'>Failed to update faculty. Please try again.</div>";
+                                $_SESSION['update']="<div class='error'>Yangilashda xatolik.</div>";
                                 header('location:'.SITEURL.'admin/index.php?page=update_faculty&id='.$faculty_id);
                             }
                         }

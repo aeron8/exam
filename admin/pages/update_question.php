@@ -40,7 +40,7 @@
                 <div class="report">
                     
                     <form method="post" action="" class="forms" enctype="multipart/form-data">
-                        <h2>Update Question</h2>
+                        <h2>Savollarni yangilash</h2>
                         <?php 
                             if(isset($_SESSION['validation']))
                             {
@@ -53,7 +53,7 @@
                                 unset($_SESSION['update']);
                             }
                         ?>
-                        <span class="name">Question</span><br />
+                        <span class="name">Savol</span><br />
                         <textarea name="question" required="true"><?php echo $question; ?></textarea> <br />
                         <script>
                             CKEDITOR.replace( 'question' );
@@ -63,43 +63,43 @@
                             if($previous_image!="")
                             {
                                 ?>
-                                <span class="name">Previous Image</span>
+                                <span class="name">Oldingi rasm</span>
                                 <img src="<?php echo SITEURL; ?>images/questions/<?php echo $previous_image; ?>" /> <br />
                                 <?php
                             }
                         ?>
                         <input type="hidden" name="previous_image" value="<?php echo $previous_image; ?>" />
                         
-                        <span class="name">New Image</span>
+                        <span class="name">Yangi rasm</span>
                         <input type="file" name="image" /><br />
                         
-                        <span class="name">First Answer</span>
+                        <span class="name">1-javob</span>
                         <input type="text" name="first_answer" value="<?php echo $first_answer;; ?>" required="true" /><br />
                         
-                        <span class="name">Second Answer</span>
+                        <span class="name">2-javob</span>
                         <input type="text" name="second_answer" value="<?php echo $second_answer; ?>" required="true" /><br />
                         
-                        <span class="name">Third Answer</span>
+                        <span class="name">3-javob</span>
                         <input type="text" name="third_answer" value="<?php echo $third_answer; ?>" required="true" /><br />
                         
-                        <span class="name">Fourth Answer</span>
+                        <span class="name">4-javob</span>
                         <input type="text" name="fourth_answer" value="<?php echo $fourth_answer; ?>" required="true" /><br />
                         
                         <!-- <span class="name">Fifth Answer</span>
                         <input type="text" name="fifth_answer" value="<?php echo $fifth_answer; ?>" required="true" /><br /> -->
                         
                         
-                        <span class="name">Answer</span>
+                        <span class="name">Javob</span>
                         <select name="answer">
-                            <option <?php if($answer==1){echo "selected='seleccted'";} ?> value="1">First Answer</option>
-                            <option <?php if($answer==2){echo "selected='seleccted'";} ?> value="2">Second Answer</option>
-                            <option <?php if($answer==3){echo "selected='seleccted'";} ?> value="3">Third Answer</option>
-                            <option <?php if($answer==4){echo "selected='seleccted'";} ?> value="4">Fourth Answer</option>
+                            <option <?php if($answer==1){echo "selected='seleccted'";} ?> value="1">1-javob</option>
+                            <option <?php if($answer==2){echo "selected='seleccted'";} ?> value="2">2-javob</option>
+                            <option <?php if($answer==3){echo "selected='seleccted'";} ?> value="3">3-javob</option>
+                            <option <?php if($answer==4){echo "selected='seleccted'";} ?> value="4">4-javob</option>
                             <!-- <option <?php if($answer==5){echo "selected='seleccted'";} ?> value="5">Fifth Answer</option> -->
                         </select>
                         <br />
                         
-                        <span class="name">Reason</span><br />
+                        <span class="name">Tushuntirish</span><br />
                         <textarea name="reason" ><?php echo $reason; ?></textarea>
                         <script>
                             CKEDITOR.replace( 'reason' );
@@ -117,7 +117,7 @@
                         </select>
                         <br /> -->
                         
-                        <span class="name">Exam</span>
+                        <span class="name">Imtihon</span>
                         <select name="faculty">
                              <?php 
                                 //Get Faculties from database
@@ -146,13 +146,13 @@
                         </select>
                         <br />
                         
-                        <span class="name">Is Active?</span>
-                        <input <?php if($is_active=='yes'){echo "checked='checked'";} ?> type="radio" name="is_active" value="yes" /> Yes 
-                        <input <?php if($is_active=='no'){echo "checked='checked'";} ?> type="radio" name="is_active" value="no" /> No
+                        <span class="name">Aktivmi?</span>
+                        <input <?php if($is_active=='yes'){echo "checked='checked'";} ?> type="radio" name="is_active" value="yes" /> Xa
+                        <input <?php if($is_active=='no'){echo "checked='checked'";} ?> type="radio" name="is_active" value="no" /> Yo'q
                         <br />
                         
-                        <input type="submit" name="submit" value="Update Question" class="btn-update" style="margin-left: 15%;" />
-                        <a href="<?php echo SITEURL; ?>admin/index.php?page=questions"><button type="button" class="btn-delete">Cancel</button></a>
+                        <input type="submit" name="submit" value="Yangilash" class="btn-update" style="margin-left: 15%;" />
+                        <a href="<?php echo SITEURL; ?>admin/index.php?page=questions"><button type="button" class="btn-delete">Bekor qilish</button></a>
                     </form>
                     <?php 
                         if(isset($_POST['submit']))
@@ -200,7 +200,7 @@
                                     $remove=$obj->remove_file($path);
                                     if($remove==false)
                                     {
-                                        $_SESSION['remove_book']="Failed to remove previous Image. Try again.";
+                                        $_SESSION['remove_book']="Rasmni o'chirishda xatolik";
                                         header('location:'.SITEURL.'admin/index.php?page=update_question&id='.$question_id);
                                         die();
                                     }
@@ -252,7 +252,7 @@
                             $res=$obj->execute_query($conn,$query);
                             if($res===true)
                             {
-                                $_SESSION['update']="<div class='success'>Question successfully updated.</div>";
+                                $_SESSION['update']="<div class='success'>Savol yangilandi</div>";
                                 header('location:'.SITEURL.'admin/index.php?page=questions');
                             }
                             else

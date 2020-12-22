@@ -2,9 +2,9 @@
         <div class="main">
             <div class="content">
                 <div class="report">
-                    <h2>Exam Manager</h2>
+                    <h2>Imtihonlarni boshqarish</h2>
                     <a href="<?php echo SITEURL; ?>admin/index.php?page=add_faculty">
-                        <button type="button" class="btn-add">Add Exam</button>
+                        <button type="button" class="btn-add">Imtihon qo'shish</button>
                     </a>
                     <?php 
                         if(isset($_SESSION['add']))
@@ -27,10 +27,10 @@
                     <table>
                         <tr>
                             <th>S.N.</th>
-                            <th>Exam Title</th>
-                            <th>Time Duration</th>
-                            <th>Qns Per Exam</th>
-                            <th>Is Active?</th>
+                            <th>Nomi</th>
+                            <th>Davomiyligi (minut)</th>
+                            <th>Savollar</th>
+                            <th>Aktivmi?</th>
                             <th>Actions</th>
                         </tr>
                         
@@ -58,8 +58,8 @@
                                         <td><?php echo $qns_per_page; ?></td>
                                         <td><?php echo $is_active; ?></td>
                                         <td>
-                                            <a href="<?php echo SITEURL; ?>admin/index.php?page=update_faculty&id=<?php echo $faculty_id; ?>"><button type="button" class="btn-update">UPDATE</button></a> 
-                                            <a href="<?php echo SITEURL; ?>admin/pages/delete.php?id=<?php echo $faculty_id; ?>&page=faculties"><button type="button" class="btn-delete" onclick="return confirm('Are you sure?')">DELETE</button></a>
+                                            <a href="<?php echo SITEURL; ?>admin/index.php?page=update_faculty&id=<?php echo $faculty_id; ?>"><button type="button" class="btn-update">Yangilash</button></a> 
+                                            <a href="<?php echo SITEURL; ?>admin/pages/delete.php?id=<?php echo $faculty_id; ?>&page=faculties"><button type="button" class="btn-delete" onclick="return confirm('Ishonchingiz komilmi?')">O'chirish</button></a>
                                         </td>
                                     </tr>
                                     <?php
@@ -67,7 +67,7 @@
                             }
                             else
                             {
-                                echo "<tr><td colspan='6'><div class='error'>No faculties added.</div></td></tr>";
+                                echo "<tr><td colspan='6'><div class='error'>Imtihon qo'shilmadi</div></td></tr>";
                             }
                         ?>
                         

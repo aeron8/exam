@@ -11,7 +11,7 @@
             if($count_rows>0)
             {?>
             <form method="post" action="" class="forms">
-                <h2>Register</h2>
+                <h2>Registratsiya</h2>
                 <?php 
                     if(isset($_SESSION['validation']))
                     {
@@ -24,31 +24,37 @@
                         unset($_SESSION['add']);
                     }
                 ?> 
-                <span class="name">First Name</span> 
-                <input type="text" name="first_name" placeholder="First Name" required="true" /> <br />
+                <span class="name">Ism</span> 
+                <input type="text" name="first_name" placeholder="Ism" required="true" /> <br />
+
+                <span class="name">Otasining ismi</span> 
+                <input type="text" name="middle_name" placeholder="Otasining ismi" required="true" /> <br />
                 
-                <span class="name">Last Name</span>
-                <input type="text" name="last_name" placeholder="Last Name" required="true" /><br />
+                <span class="name">Familiya</span>
+                <input type="text" name="last_name" placeholder="Familiya" required="true" /><br />
                 
-                <span class="name">Email</span>
+                <!-- <span class="name">Email</span>
                 <input type="email" name="email" placeholder="Email Address" required="true" /><br />
                 
                 <span class="name">Username</span>
                 <input type="text" name="username" placeholder="Username" required="true" /><br />
                 
                 <span class="name">Password</span>
-                <input type="text" name="password" placeholder="Password" required="true" /><br />
+                <input type="text" name="password" placeholder="Password" required="true" /><br /> -->
                 
-                <span class="name">Contact</span>
-                <input type="tel" name="contact" placeholder="Contact Number" /><br />
+                <span class="name">Tel. raqami</span>
+                <input type="tel" name="contact" placeholder="991234567" pattern="[0-9]{9}" required /><br />
                 
-                <span class="name">Gender</span>
-                <input type="radio" name="gender" value="male" /> Male 
-                <input type="radio" name="gender" value="female" /> Female 
-                <input type="radio" name="gender" value="other" /> Other
+                <span class="name">Ota-ona tel. raqami</span>
+                <input type="tel" name="contact2" placeholder="991234567" pattern="[0-9]{9}" required /><br />
+
+                <span class="name">Jins</span>
+                <input type="radio" name="gender" value="male" /> Erkak
+                <input type="radio" name="gender" value="female" /> Ayol
+                <!-- <input type="radio" name="gender" value="other" /> Other -->
                 <br />
                 
-                <span class="name">Exam</span>
+                <span class="name">Imtihon</span>
                 <select name="faculty">
                     <?php 
                         //Get Faculty from database
@@ -76,10 +82,10 @@
                 </select>
                 <br />
                 
-                <span class="name">Is Active?</span>
+                <!-- <span class="name">Is Active?</span>
                 <input type="radio" name="is_active" value="yes" /> Yes 
                 <input type="radio" name="is_active" value="no" /> No
-                <br />
+                <br /> -->
                 
                 <input type="submit" name="submit" value="Register" class="btn-add" style="margin-left: 15%;" />
                 <a href="http://maab.uz/"><button type="button" class="btn-delete">Cancel</button></a>
@@ -87,7 +93,7 @@
                 <?php
                     }
                 else {
-                    echo("<div class='wait-container'><h1 style='padding: 20% 0'>Exam has not started yet...</h1></div>");
+                    echo("<div class='wait-container'><h1 style='padding: 20% 0'>Hali imtihon boshlanmadi...</h1></div>");
                 }
             ?>
             
@@ -98,10 +104,12 @@
                     //Getting Values from the form
                     $first_name=$obj->sanitize($conn,$_POST['first_name']);
                     $last_name=$obj->sanitize($conn,$_POST['last_name']);
-                    $email=$obj->sanitize($conn,$_POST['email']);
-                    $username=$obj->sanitize($conn,$_POST['username']);
-                    $password=$obj->sanitize($conn,$_POST['password']);
+                    $email=$obj->sanitize($conn,$_POST['contact']);
+                    $username=$obj->sanitize($conn,$_POST['contact']);
+                    $password=$obj->sanitize($conn,$_POST['contact']);
+                    $middle_name=$obj->sanitize($conn,$_POST['middle_name']);
                     $contact=$obj->sanitize($conn,$_POST['contact']);
+                    $contact2=$obj->sanitize($conn,$_POST['contact2']);
                     if(isset($_POST['gender']))
                     {
                         $gender=$obj->sanitize($conn,$_POST['gender']);
@@ -123,7 +131,7 @@
                     $added_date=date('Y-m-d');
                     
                     //Backend Validation, Checking whether the input fields are empty or not
-                    if(($first_name||$last_name||$email||$username||$password)==null)
+                    if(($first_name||$last_name||$email||$username||$password||$middle_name||$contact2)==null)
                     {
                         //SET SSESSION Message
                         $_SESSION['validation']="<div class='error'>First Name or Last Name, or Email or Username or Password is Empty.</div>";
@@ -134,10 +142,12 @@
                     $tbl_name='tbl_student';
                     $data="first_name='$first_name',
                             last_name='$last_name',
+                            middle_name='$middle_name',
                             email='$email',
                             username='$username',
                             password='$password',
                             contact='$contact',
+                            contact2='$contact2',
                             gender='$gender',
                             faculty='$faculty',
                             is_active='$is_active',
@@ -148,12 +158,12 @@
                     if($res===true)
                     {
                         $_SESSION['student']=$username;
-                        $_SESSION['add']="<div class='success'>Successfully registered</div>";
+                        $_SESSION['add']="<div class='success'>Muvaffaqiyatli registratsiya qilindi</div>";
                         header('location:'.SITEURL.'index.php?page=welcome');
                     }
                     else
                     {
-                        $_SESSION['add']="<div class='error'>Failed to add new student. Try again.</div>";
+                        $_SESSION['add']="<div class='error'>Registratsiya qilishda xatolik</div>";
                         header('location:'.SITEURL.'index.php?page=login');
                     }
                 }

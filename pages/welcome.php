@@ -17,14 +17,17 @@
                             //$_SESSION['start_time']=
                         }
                     ?>
-                    Hello <span class="heavy"><?php echo $_SESSION['student']; ?></span>. Welcome to Test Preparation Portal.<br />
+                    Hello <span class="heavy">. Welcome to MAAB Test Portal.<br />
                     
                     <div class="success">
                         <p style="text-align: left;">
-                            Here are some of the rules and regulations of this app.<br />
-                            1. This test is automated and you won't be able to return to previous question.<br />
-                            2. Once you successfully login, you can't log back in unless the permission of system administrator.<br />
-                            3. After you click on "Take a Test", the timer will start and it can't be paused or stopped.<br />
+                            Test topshirish tartibi.<br />
+                            1. Test avtomatlashtirilgan va savollarni o'tkazib bo'lmaydi.<br />
+                            <!-- 1. This test is automated and you won't be able to return to previous question.<br /> -->
+                            2. Test topshirishga 1 marta imkon beriladi. Logout qilgandan so'ng qayta kirishning iloji yo'q. <br />
+                            <!-- 2. Once you successfully login, you can't log back in unless the permission of system administrator.<br /> -->
+                            3. Test boshlangandan so'ng timerga start beriladi va uni to'xtatish yoki o'chirishning iloji yo'q. <br />
+                            <!-- 3. After you click on "Take a Test", the timer will start and it can't be paused or stopped.<br /> -->
                         </p>
                     </div>
                     <?php
@@ -36,11 +39,11 @@
                          if($count_rows>0)
                          {?>
                             <a href="<?php echo SITEURL; ?>index.php?page=question">
-                                <button type="button" class="btn-go">Take a Test</button>
+                                <button type="button" class="btn-go">Testni boshlash</button>
                             </a>
-                            <a href="<?php echo SITEURL; ?>index.php?page=logout">
-                                <button type="button" class="btn-exit">&nbsp; Quit &nbsp;</button>
-                            </a>
+                            <!-- <a href="index.php?page=logout">
+                                <button type="button" class="btn-exit">&nbsp;  &nbsp;</button>
+                            </a> -->
                         <?php
                          }
                         else {

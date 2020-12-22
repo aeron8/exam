@@ -69,7 +69,7 @@ Version: 1.0
 }
 .header .wrapper .head-title h1{
     font-family: 'Poppins', sans-serif;
-    /* font-weight: lighter; */
+    font-weight: lighter;
     line-height: 60px;
     text-align: center;
     letter-spacing: 1rem;
@@ -79,15 +79,16 @@ Version: 1.0
 .menu .wrapper ul{
     list-style-type: none;
 }
-.menu .wrapper ul a{
-    color: #5f9ed1;
-    text-decoration: none;
-    padding: 1%;
-}
 .menu .wrapper ul a:hover{
-    background-color: #006400;
+    color: #5f9ed1;
+    background-color: rgb(246, 248, 248);
+}
+.menu .wrapper ul a{
+    background-color: #5f9ed1;
     color: #FFFFFF;
     transition: all 0.5s ease;
+    padding: 1%;
+    text-decoration: none;
 }
 .menu .wrapper ul li{
     display: inline;
@@ -137,9 +138,9 @@ Version: 1.0
     box-shadow: 0 0 5px 1px #5f9ed1;
 }
 .success{
-    border: 1px solid #388E3C;
-    background-color: #AED581;
-    color: #388E3C;
+    border: 1px solid #006ba4;
+    background-color: #8ebdd8;
+    color: #006ba4;
     font-size: 90%;
     padding: 1%;
     margin: 1%;

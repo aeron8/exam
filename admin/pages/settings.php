@@ -132,20 +132,20 @@
                 <div class="report">
                     
                     <form method="post" action="" class="forms">
-                        <h2>Change Password</h2>
+                        <h2>Parolni o'zgartirish</h2>
                         
-                        <span class="name">Current Password</span>
+                        <span class="name">Hozirgi parol</span>
                         <input type="password" name="current_password" placeholder="Current Password" required="true" /><br />
                         
-                        <span class="name">New Password</span>
+                        <span class="name">Yangi parol</span>
                         <input type="password" name="new_password" placeholder="New Password" required="true" /><br />
                         
-                        <span class="name">Confirm Password</span>
+                        <span class="name">Parolni tasdiqlang</span>
                         <input type="password" name="confirm_password" placeholder="Confirm Password" required="true" /><br />
                         
                         
-                        <input type="submit" name="update" value="Update Password" class="btn-update" style="margin-left: 15%;" />
-                        <a href="<?php echo SITEURL; ?>admin/index.php"><button type="button" class="btn-delete">Cancel</button></a>
+                        <input type="submit" name="update" value="Yangilash" class="btn-update" style="margin-left: 15%;" />
+                        <a href="<?php echo SITEURL; ?>admin/index.php"><button type="button" class="btn-delete">Bekor qilish</button></a>
                     </form>
                     
                     <?php 
@@ -167,24 +167,24 @@
                                     $res=$obj->execute_query($conn,$query);
                                     if($res==true)
                                     {
-                                        $_SESSION['password']="<div class='success'>Password changed successfully.</div>";
+                                        $_SESSION['password']="<div class='success'>Parol yangilandi.</div>";
                                         header('location:'.SITEURL.'admin/index.php?page=settings');
                                     }
                                     else
                                     {
-                                        $_SESSION['password']="<div class='error'>Failed to change password. Try again.</div>";
+                                        $_SESSION['password']="<div class='error'>Parolni yangilashda xatolik.</div>";
                                         header('location:'.SITEURL.'admin/index.php?page=settings');
                                     }
                                 }
                                 else
                                 {
-                                    $_SESSION['not_match']="<div class='error'>New Password and Confirm Password did not match.</div>";
+                                    $_SESSION['not_match']="<div class='error'>Yangi parol mos kelmadi.</div>";
                                     header('location:'.SITEURL.'admin/index.php?page=settings');
                                 }
                             }
                             else
                             {
-                                $_SESSION['not_match']="<div class='error'>Current Password did not match.</div>";
+                                $_SESSION['not_match']="<div class='error'>Hozirgi parol mos kelmadi.</div>";
                                 header('location:'.SITEURL.'admin/index.php?page=settings');
                             }
                         }

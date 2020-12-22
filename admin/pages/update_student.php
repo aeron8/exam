@@ -12,11 +12,13 @@
         {
             $row=$obj->fetch_data($res);
             $first_name=$row['first_name'];
+            $middle_name=$row['middle_name'];
             $last_name=$row['last_name'];
             $email=$row['email'];
             $username=$row['username'];
             $password=$row['password'];
             $contact=$row['contact'];
+            $contact2=$row['contact2'];
             $gender=$row['gender'];
             $faculty=$row['faculty'];
             $is_active=$row['is_active'];
@@ -36,7 +38,7 @@
                 <div class="report">
                     
                     <form method="post" action="" class="forms">
-                        <h2>Update Student</h2>
+                        <h2>Yangilash</h2>
                         <?php 
                             if(isset($_SESSION['validation']))
                             {
@@ -49,31 +51,37 @@
                                 unset($_SESSION['update']);
                             }
                         ?>
-                        <span class="name">First Name</span> 
+                        <span class="name">Ismi</span> 
                         <input type="text" name="first_name" value="<?php echo $first_name; ?>" required="true" /> <br />
                         
-                        <span class="name">Last Name</span>
+                        <span class="name">Otasining ismi</span>
+                        <input type="text" name="middle_name" value="<?php echo $middle_name; ?>" required="true" /><br />
+
+                        <span class="name">Familiya</span>
                         <input type="text" name="last_name" value="<?php echo $last_name; ?>" required="true" /><br />
                         
-                        <span class="name">Email</span>
-                        <input type="email" name="email" value="<?php echo $email; ?>" required="true" /><br />
+                        <!-- <span class="name">Email</span> -->
+                        <input type="hidden" name="email" value="<?php echo $email; ?>" required="true" />
                         
-                        <span class="name">Username</span>
-                        <input type="text" name="username" value="<?php echo $username; ?>" required="true" /><br />
+                        <!-- <span class="name">Username</span> -->
+                        <input type="hidden" name="username" value="<?php echo $username; ?>" required="true" />
                         
-                        <span class="name">Password</span>
-                        <input type="text" name="password" value="<?php echo $password; ?>" required="true" /><br />
+                        <!-- <span class="name">Password</span> -->
+                        <input type="hidden" name="password" value="<?php echo $password; ?>" required="true" />
                         
-                        <span class="name">Contact</span>
+                        <span class="name">Tel. raqami</span>
                         <input type="tel" name="contact" value="<?php echo $contact; ?>" /><br />
                         
-                        <span class="name">Gender</span>
-                        <input <?php if($gender=='male'){echo "checked='checked'";} ?> type="radio" name="gender" value="male" /> Male 
-                        <input <?php if($gender=='female'){echo "checked='checked'";} ?> type="radio" name="gender" value="female" /> Female 
-                        <input <?php if($gender=='other'){echo "checked='checked'";} ?> type="radio" name="gender" value="other" /> Other
+                        <span class="name">Ota-ona tel.</span>
+                        <input type="tel" name="contact2" value="<?php echo $contact2; ?>" /><br />
+
+                        <span class="name">Jinsi</span>
+                        <input <?php if($gender=='male'){echo "checked='checked'";} ?> type="radio" name="gender" value="male" /> Erkak
+                        <input <?php if($gender=='female'){echo "checked='checked'";} ?> type="radio" name="gender" value="female" /> Ayol 
+                        <!-- <input <?php if($gender=='other'){echo "checked='checked'";} ?> type="radio" name="gender" value="other" /> Other -->
                         <br />
                         
-                        <span class="name">Exam</span>
+                        <span class="name">Imtihon</span>
                         <select name="faculty">
                             <?php 
                                 //Get Faculties from database
@@ -102,13 +110,13 @@
                         </select>
                         <br />
                         
-                        <span class="name">Is Active?</span>
-                        <input <?php if($is_active=='yes'){echo "checked='checked'";} ?> type="radio" name="is_active" value="yes" /> Yes 
-                        <input <?php if($is_active=='no'){echo "checked='checked'";} ?> type="radio" name="is_active" value="no" /> No
+                        <span class="name">Aktivmi?</span>
+                        <input <?php if($is_active=='yes'){echo "checked='checked'";} ?> type="radio" name="is_active" value="yes" /> Xa
+                        <input <?php if($is_active=='no'){echo "checked='checked'";} ?> type="radio" name="is_active" value="no" /> Yo'q
                         <br />
                         
-                        <input type="submit" name="submit" value="Update Student" class="btn-update" style="margin-left: 15%;" />
-                        <a href="<?php echo SITEURL; ?>admin/index.php?page=students"><button type="button" class="btn-delete">Cancel</button></a>
+                        <input type="submit" name="submit" value="Yangilash" class="btn-update" style="margin-left: 15%;" />
+                        <a href="<?php echo SITEURL; ?>admin/index.php?page=students"><button type="button" class="btn-delete">Bekor qilish</button></a>
                     </form>
                     
                     <?php 
@@ -117,10 +125,12 @@
                             //echo "Clicked";
                             $first_name=$obj->sanitize($conn,$_POST['first_name']);
                             $last_name=$obj->sanitize($conn,$_POST['last_name']);
-                            $email=$obj->sanitize($conn,$_POST['email']);
-                            $username=$obj->sanitize($conn,$_POST['username']);
-                            $password=$obj->sanitize($conn,$_POST['password']);
+                            $middle_name=$obj->sanitize($conn,$_POST['middle_name']);
+                            // $email=$obj->sanitize($conn,$_POST['email']);
+                            // $username=$obj->sanitize($conn,$_POST['username']);
+                            // $password=$obj->sanitize($conn,$_POST['password']);
                             $contact=$obj->sanitize($conn,$_POST['contact']);
+                            $contact2=$obj->sanitize($conn,$_POST['contact2']);
                             if(isset($_POST['gender']))
                             {
                                 $gender=$_POST['gender'];
@@ -144,10 +154,12 @@
                             //SEt New Data to Change
                             $data="first_name='$first_name',
                                     last_name='$last_name',
+                                    middle_name='$middle_name',
                                     email='$email',
                                     username='$username',
                                     password='$password',
                                     contact='$contact',
+                                    contact2='$contact2',
                                     gender='$gender',
                                     faculty='$faculty',
                                     is_active='$is_active',

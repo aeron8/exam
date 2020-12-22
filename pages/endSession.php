@@ -33,7 +33,7 @@
                             echo $_SESSION['time_complete'];
                         }
                     ?>
-                     You have successfully completed the test. Thank You.<br />
+                     Testni muvaffaqiyatli tugatdingiz.<br />
                      <?php 
                         $tbl_name='tbl_student';
                         $username=$_SESSION['student'];
@@ -77,14 +77,13 @@
                             $realMark=$marksShown+$digitToAdd;
                         }
                      ?>
-                     You got <h2><?php echo $realMark; ?></h2>
+                     <!-- You got <h2><?php echo $realMark; ?></h2> -->
                      
-                     <a href="<?php echo SITEURL; ?>index.php?page=detail_result">
+                     <!-- <a href="<?php echo SITEURL; ?>index.php?page=detail_result">
                         <button type="button" class="btn-exit">
                             View Result
                         </button>
-                     </a>
-                    
+                     </a> -->
                     <a href="<?php echo SITEURL; ?>index.php?page=logout">
                         <button type="button" class="btn-exit">&nbsp; Log Out &nbsp;</button>
                     </a>
