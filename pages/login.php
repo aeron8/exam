@@ -102,69 +102,91 @@
                 if(isset($_POST['submit']))
                 {
                     //Getting Values from the form
-                    $first_name=$obj->sanitize($conn,$_POST['first_name']);
-                    $last_name=$obj->sanitize($conn,$_POST['last_name']);
-                    $email=$obj->sanitize($conn,$_POST['contact']);
-                    $username=$obj->sanitize($conn,$_POST['contact']);
-                    $password=$obj->sanitize($conn,$_POST['contact']);
-                    $middle_name=$obj->sanitize($conn,$_POST['middle_name']);
-                    $contact=$obj->sanitize($conn,$_POST['contact']);
-                    $contact2=$obj->sanitize($conn,$_POST['contact2']);
-                    if(isset($_POST['gender']))
+                    $contactX=$obj->sanitize($conn,$_POST['contact']);
+                    //  $password_db=md5($obj->sanitize($conn,$_POST['password']));
+                    
+                    //  if(($username=="")or($password=""))
+                    //  {
+                    //      $_SESSION['validation']="<div class='error'>Username or Password is Empty</div>";
+                    //      header('location:'.SITEURL.'admin/login.php');
+                    //  }
+                    $tbl_nameX="tbl_student";
+                    $whereX="contact='$contactX'";
+                    $queryX=$obj->select_data($tbl_nameX,$whereX);
+                    $resX=$obj->execute_query($conn,$queryX);
+                    $count_rowsX=$obj->num_rows($resX);
+                    if($count_rowsX>=1)
                     {
-                        $gender=$obj->sanitize($conn,$_POST['gender']);
+                        $_SESSION['validation']="<div class='error'>Ushbu foydalanuvchi allaqachon ro'yhatdan o'tgan.</div>";
+                        header('location:'.SITEURL.'index.php?page=login'); 
                     }
                     else
                     {
-                        $gender='male';
-                    }
+                        //Getting Values from the form
+                        $first_name=$obj->sanitize($conn,$_POST['first_name']);
+                        $last_name=$obj->sanitize($conn,$_POST['last_name']);
+                        $email=$obj->sanitize($conn,$_POST['contact']);
+                        $username=$obj->sanitize($conn,$_POST['contact']);
+                        $password=$obj->sanitize($conn,$_POST['contact']);
+                        $middle_name=$obj->sanitize($conn,$_POST['middle_name']);
+                        $contact=$obj->sanitize($conn,$_POST['contact']);
+                        $contact2=$obj->sanitize($conn,$_POST['contact2']);
+                        if(isset($_POST['gender']))
+                        {
+                            $gender=$obj->sanitize($conn,$_POST['gender']);
+                        }
+                        else
+                        {
+                            $gender='male';
+                        }
                     
-                    $faculty=$obj->sanitize($conn,$_POST['faculty']);
-                    if(isset($_POST['is_active']))
-                    {
-                        $is_active=$_POST['is_active'];
-                    }
-                    else
-                    {
-                        $is_active='yes';
-                    }
-                    $added_date=date('Y-m-d');
-                    
-                    //Backend Validation, Checking whether the input fields are empty or not
-                    if(($first_name||$last_name||$email||$username||$password||$middle_name||$contact2)==null)
-                    {
-                        //SET SSESSION Message
-                        $_SESSION['validation']="<div class='error'>First Name or Last Name, or Email or Username or Password is Empty.</div>";
-                        header('location:'.SITEURL.'admin/index.php?page=add_student');
-                    }
-                    
-                    //Addding to the database
-                    $tbl_name='tbl_student';
-                    $data="first_name='$first_name',
-                            last_name='$last_name',
-                            middle_name='$middle_name',
-                            email='$email',
-                            username='$username',
-                            password='$password',
-                            contact='$contact',
-                            contact2='$contact2',
-                            gender='$gender',
-                            faculty='$faculty',
-                            is_active='$is_active',
-                            added_date='$added_date',
-                            updated_date=''";
-                    $query=$obj->insert_data($tbl_name,$data);
-                    $res=$obj->execute_query($conn,$query);
-                    if($res===true)
-                    {
-                        $_SESSION['student']=$username;
-                        $_SESSION['add']="<div class='success'>Muvaffaqiyatli registratsiya qilindi</div>";
-                        header('location:'.SITEURL.'index.php?page=welcome');
-                    }
-                    else
-                    {
-                        $_SESSION['add']="<div class='error'>Registratsiya qilishda xatolik</div>";
-                        header('location:'.SITEURL.'index.php?page=login');
+                        $faculty=$obj->sanitize($conn,$_POST['faculty']);
+                        if(isset($_POST['is_active']))
+                        {
+                            $is_active=$_POST['is_active'];
+                        }
+                        else
+                        {
+                            $is_active='yes';
+                        }
+                        $added_date=date('Y-m-d');
+                        
+                        //Backend Validation, Checking whether the input fields are empty or not
+                        if(($first_name||$last_name||$email||$username||$password||$middle_name||$contact2)==null)
+                        {
+                            //SET SSESSION Message
+                            $_SESSION['validation']="<div class='error'>First Name or Last Name, or Email or Username or Password is Empty.</div>";
+                            header('location:'.SITEURL.'admin/index.php?page=add_student');
+                        }
+                        
+                        //Addding to the database
+                        $tbl_name='tbl_student';
+                        $data="first_name='$first_name',
+                                last_name='$last_name',
+                                middle_name='$middle_name',
+                                email='$email',
+                                username='$username',
+                                password='$password',
+                                contact='$contact',
+                                contact2='$contact2',
+                                gender='$gender',
+                                faculty='$faculty',
+                                is_active='$is_active',
+                                added_date='$added_date',
+                                updated_date='2020-12-02'";
+                        $query=$obj->insert_data($tbl_name,$data);
+                        $res=$obj->execute_query($conn,$query);
+                        if($res===true)
+                        {
+                            $_SESSION['student']=$username;
+                            $_SESSION['add']="<div class='success'>Muvaffaqiyatli registratsiya qilindi</div>";
+                            header('location:'.SITEURL.'index.php?page=welcome');
+                        }
+                        else
+                        {
+                            $_SESSION['add']="<div class='error'>Registratsiya qilishda xatolik</div>";
+                            header('location:'.SITEURL.'index.php?page=login');
+                        }
                     }
                 }
             ?>

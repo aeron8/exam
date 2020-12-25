@@ -29,7 +29,7 @@
                             <th>Tel.</th>
                             <th>Ota-ona tel.</th>
                             <th>Imtihon</th>
-                            <th>Is Active?</th>
+                            <th>Aktivmi?</th>
                             <th>Actions</th>
                         </tr>
                     <!--Displaying All Data From Database-->

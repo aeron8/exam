@@ -17,7 +17,7 @@
                             //$_SESSION['start_time']=
                         }
                     ?>
-                    Hello <span class="heavy">. Welcome to MAAB Test Portal.<br />
+                    <span class="heavy">MAAB Innovation Test portaliga xush kelibsiz.<br />
                     
                     <div class="success">
                         <p style="text-align: left;">

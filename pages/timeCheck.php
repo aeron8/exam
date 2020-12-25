@@ -7,7 +7,7 @@
         $end=strtotime($_SESSION['end_time']);
         if($start>$end)
         {
-            $_SESSION['time_complete']="<div class='error'>Your exam time has ended. Thank You.</div>";
+            $_SESSION['time_complete']="<div class='error'>Imtihon tugadi.</div>";
             header('location:'.SITEURL.'index.php?page=endSession');
             echo "session end";die();
         }
