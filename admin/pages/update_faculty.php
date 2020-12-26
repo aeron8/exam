@@ -15,6 +15,7 @@
                     $faculty_name=$row['faculty_name'];
                     $time_duration=$row['time_duration'];
                     $qns_per_page=$row['qns_per_set'];
+                    $parol=$row['parol'];
                     $is_active=$row['is_active'];
                 }
                 else
@@ -48,6 +49,9 @@
                         
                         <span class="name">Savollar</span>
                         <input type="number" name="qns_per_page" value="<?php echo $qns_per_page; ?>" required="true" /><br />
+
+                        <span class="name">Parol</span>
+                        <input type="tel" name="parol" placeholder="12345678" pattern="[0-9]{8}" value="<?php echo $parol; ?>" required /><br />
                         
                         <!-- <span class="name">Total English Qns</span>
                         <input type="number" name="total_english_qns" value="<?php echo $total_english; ?>" required="true" /><br />
@@ -69,13 +73,15 @@
                             //echo "Clcked";
                             //Getting all the values from the forms
                             $faculty_name=$obj->sanitize($conn,$_POST['faculty_name']);
+                            $parol=$obj->sanitize($conn,$_POST['parol']);
                             $time_duration=$obj->sanitize($conn,$_POST['time_duration']);
                             $qns_per_page=$obj->sanitize($conn,$_POST['qns_per_page']);
                             $is_active=$obj->sanitize($conn,$_POST['is_active']);
                             $updated_date=date('Y-m-d');
                             
                             $tbl_name='tbl_faculty';
-                            $data="faculty_name='$faculty_name',
+                            $data="parol='$parol',
+                                    faculty_name='$faculty_name',
                                     time_duration='$time_duration',
                                     qns_per_set='$qns_per_page',
                                     is_active='$is_active',

@@ -22,7 +22,7 @@
                         </tr>
                         
                         <?php 
-                            $tbl_name="tbl_result_summary ORDER BY added_date DESC";
+                            $tbl_name="tbl_result_summary ORDER BY marks DESC";
                             $query=$obj->select_data($tbl_name);
                             $res=$obj->execute_query($conn,$query);
                             $count_rows=$obj->num_rows($res);

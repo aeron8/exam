@@ -28,6 +28,7 @@
                         <tr>
                             <th>S.N.</th>
                             <th>Nomi</th>
+                            <th>Parol</th>
                             <th>Davomiyligi (minut)</th>
                             <th>Savollar</th>
                             <th>Aktivmi?</th>
@@ -47,6 +48,7 @@
                                 {
                                     $faculty_id=$row['faculty_id'];
                                     $faculty_name=$row['faculty_name'];
+                                    $parol=$row['parol'];
                                     $time_duration=$row['time_duration'];
                                     $qns_per_page=$row['qns_per_set'];
                                     $is_active=$row['is_active'];
@@ -54,6 +56,7 @@
                                     <tr>
                                         <td><?php echo $sn++; ?>. </td>
                                         <td><?php echo $faculty_name; ?></td>
+                                        <td><?php echo $parol; ?></td>
                                         <td><?php echo $time_duration; ?></td>
                                         <td><?php echo $qns_per_page; ?></td>
                                         <td><?php echo $is_active; ?></td>

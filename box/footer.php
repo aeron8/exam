@@ -2,8 +2,7 @@
         <footer class="footer">
             <div class="wrapper">
                 <p>
-                    <a href="http://maab.uz/" title="MAAB innovation">MAAB</a> &copy; <?php echo date('Y'); ?>. All Rights Reserved.    
-                    Created by <a href="https://www.t.me/xrahimov" title="Khudoyberdi Rakhimov" target="_blank">xrahimov</a>.
+                    <a href="http://maab.uz/" title="MAAB innovation">MAAB INNOVATION</a> &copy; <?php echo date('Y'); ?>. All Rights Reserved.    
                 </p>
             </div>
         </footer>

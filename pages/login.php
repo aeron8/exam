@@ -48,7 +48,7 @@
                 <span class="name">Ota-ona tel. raqami</span>
                 <input type="tel" name="contact2" placeholder="991234567" pattern="[0-9]{9}" required /><br />
 
-                <span class="name">Jins</span>
+                <span class="name">Jinsi</span>
                 <input type="radio" name="gender" value="male" /> Erkak
                 <input type="radio" name="gender" value="female" /> Ayol
                 <!-- <input type="radio" name="gender" value="other" /> Other -->

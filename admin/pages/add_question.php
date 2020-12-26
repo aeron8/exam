@@ -57,7 +57,7 @@
                         </select>
                         <br />
                         
-                        <span class="name">Sabab</span><br />
+                        <span class="name">Tushuntirish</span><br />
                         <textarea name="reason" placeholder="Reason to be the answer"></textarea>
                         <script>
                             CKEDITOR.replace( 'reason' );

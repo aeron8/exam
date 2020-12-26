@@ -21,10 +21,13 @@
                         <input type="text" name="faculty_name" placeholder="Nomi..." required="true" /> <br />
                         
                         <span class="name">Davomiyligi</span>
-                        <input type="text" name="time_duration" placeholder="Imtihon davomiyligi (minut)..." required="true" /><br />
+                        <input type="number" name="time_duration" placeholder="Imtihon davomiyligi (minut)..." required="true" /><br />
                         
                         <span class="name">Savollar soni</span>
-                        <input type="text" name="qns_per_page" placeholder="Umumiy savollar soni..." required="true" /><br />
+                        <input type="number" name="qns_per_page" placeholder="Umumiy savollar soni..." required="true" /><br />
+
+                        <span class="name">Parol</span>
+                        <input type="tel" name="parol" placeholder="12345678" pattern="[0-9]{8}" required /><br />
                         
                         <!-- <span class="name">Mantiqiy savollar</span>
                         <input type="number" name="total_english_qns" placeholder="Mantiqiy savollarv soni..." required="true" /><br />
@@ -51,8 +54,9 @@
                             $faculty_name=$obj->sanitize($conn,$_POST['faculty_name']);
                             $time_duration=$obj->sanitize($conn,$_POST['time_duration']);
                             $qns_per_page=$obj->sanitize($conn,$_POST['qns_per_page']);
-                            $total_english=$obj->sanitize($conn,$_POST['total_english_qns']);
-                            $total_math=$obj->sanitize($conn,$_POST['total_math_qns']);
+                            // $total_english=$obj->sanitize($conn,$_POST['total_english_qns']);
+                            // $total_math=$obj->sanitize($conn,$_POST['total_math_qns']);
+                            $parol=$obj->sanitize($conn,$_POST['parol']);
                             if(isset($_POST['is_active']))
                             {
                                 $is_active=$obj->sanitize($conn,$_POST['is_active']);
@@ -71,7 +75,8 @@
                             }
                             //Inserting into the database
                             $tbl_name='tbl_faculty';
-                            $data="faculty_name='$faculty_name',
+                            $data="parol='$parol',
+                                    faculty_name='$faculty_name',
                                     time_duration='$time_duration',
                                     qns_per_set='$qns_per_page',
                                     is_active='$is_active',
